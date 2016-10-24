@@ -1,0 +1,10 @@
+**/.cache/
+**/htmlcov/
+**/.idea/
+**/__pycache__/
+**/deployment_tools/src/
+**/.coverage
+**/certs/*.pem
+!**/deployment_tools/src/empty
+**/server_config.ini
+**/deployment.ini
