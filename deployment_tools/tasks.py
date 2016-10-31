@@ -60,6 +60,8 @@ RUN apk add libxml2-dev
 RUN apk add libc-dev
 RUN apk add postgresql-dev
 
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+
 ARG PROJECT_NAME
 ARG APPLICATION_PORT
 
