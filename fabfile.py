@@ -43,25 +43,6 @@ def _delete_excess_files(
                 pass
 
 
-def _create_requirements(project_dir, requirements_dir):
-    """
-    You must resolve conflicts yourself
-    """
-
-    result = []
-    requirements_template = re.compile(r'.*requirements.txt')
-
-    for path, dirs, files in os.walk(project_dir, topdown=True):
-        for file in files:
-            if requirements_template.match(file):
-                with open(os.path.join(path, file)) as f:
-                    result.extend(i.replace(' ', '') for i in f.readlines())
-                os.remove(os.path.join(path, file))
-
-    with open(os.path.join(requirements_dir, 'requirements.txt'), 'w') as requirements_file:
-        requirements_file.write('\n'.join(set(result)))
-
-
 def get_project_dir():
     return env['{}_project_dir'.format(env.host_string)]
 
@@ -89,8 +70,6 @@ def prepare_projects():
         project_abs_path = os.path.join(projects_path, project_dir)
         if not os.path.isdir(project_abs_path):
             continue
-
-        _create_requirements(project_abs_path, project_abs_path)
 
     _delete_excess_files('deployment_tools')
 

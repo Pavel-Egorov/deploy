@@ -60,10 +60,10 @@ RUN apk add libxml2-dev
 RUN apk add libc-dev
 RUN apk add postgresql-dev
 
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+
 ARG PROJECT_NAME
 ARG APPLICATION_PORT
-
-EXPOSE $APPLICATION_PORT
 
 ENV PROJECT_NAME $PROJECT_NAME
 
@@ -321,6 +321,8 @@ def _init_project(ctx, service_name, project_name, params, is_admin):
     dockerfile_name = '{}_dockerfile'.format(service_name)
     with open(dockerfile_name, 'w') as f:
         f.write(DOCKERFILE_TEMPLATE)
+        if params['APPLICATION_PORT']:
+            f.write('EXPOSE $APPLICATION_PORT\n')
         f.write(entry_point)
 
     project_settings['build']['dockerfile'] = dockerfile_name
