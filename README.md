@@ -1,10 +1,14 @@
 python_deploy
 =============
 
-This package allow You to deploy web python project to remote server using fabric on client side and invoke, docker on server side.
+> :warning: **Deprecation warning**: this project isn't under support anymore, it may still work for some cases,
+> but it isn't guaranteed. 
+
+This package allows you to deploy python web service to remote server using fabric on client side and invoke, docker on 
+server side.
 
 Currently it supports:
-- Django
+- Django-based services
 
 ---
 Installation
@@ -12,7 +16,7 @@ Installation
 
 Prerequisites:
 
-1. python3.5.x
+1. Python 3.5.x
 ---
 
 1. Download project source files
@@ -36,14 +40,15 @@ Deploy Your project
 
     6.1. First deploy:
 
-            fab tune_env deploy
+        fab tune_env deploy
 
     6.2. Update:
 
-            fab tune_env force_update
+        fab tune_env force_update
 
 ---
 CONTRIBUTE
 ----------
 
-If You have found an error or want to offer some changes - create a pull request and I will review it as soon as possible!
+If You have found an error or want to offer some changes - create a pull request,
+and I will review it as soon as possible!

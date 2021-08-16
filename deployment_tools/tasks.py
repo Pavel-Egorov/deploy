@@ -17,6 +17,7 @@ def add_module_to_pythonpath():
     yield
     sys.path.pop(0)
 
+
 with add_module_to_pythonpath():
     from utils import load_config, get_init_db_envs, create_init_db_file, get_extra_envs, normalize
 
@@ -171,6 +172,7 @@ def prepare_for_nginx(config, _, compose_conf_template):
         f.write(nc.gen_config())
 
     return compose_conf
+
 
 ADDITIONAL_SERVICES = {
     'postgres_db': {

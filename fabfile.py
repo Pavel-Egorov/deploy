@@ -20,6 +20,7 @@ def _ignore_timeout_wrapper(wrapped, _, args, kwargs):
     except TimeoutError:
         return wrapped(*args, **kwargs)
 
+
 run = _ignore_timeout_wrapper(_run)
 sudo = _ignore_timeout_wrapper(_sudo)
 
